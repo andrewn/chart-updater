@@ -1,0 +1,90 @@
+<!-- Example Chart Item
+<li class="previewable number1">						  
+    <span class="movement non_mover"> 
+      <img src="/radio1/chart/images/assets/non_mover_icon.png" alt="up" /> 
+    </span>							
+    <span class="position">1
+    </span>							
+    <img src="http://www.bbc.co.uk/radio1/chart/artwork/catco157687536.jpg" alt="Fireflies - Owl City" class="cover" />		
+
+    <div class="button_container"> 
+	<a onclick="return false;" href="#" class="previewItem" id="button"> 
+		<span class="loader"></span> 
+	</a> 
+  </div> 
+
+
+    <a href="/music/artists/ad279295-653f-42e1-9aaa-b731df2e78ba">														 								
+      <span class="artist">Owl City
+      </span>								
+      <span class="track">Fireflies
+      </span>							
+  </a>							
+    <span class="status">							 
+      <span class="change">non-mover
+      </span> |  							 
+      <span class="weeks-in-chart">5 weeks in chart
+      </span>							
+    </span>							
+    <span class="detail">							 
+      <a href="/music/artists/ad279295-653f-42e1-9aaa-b731df2e78ba" class="label">Go to artist site</a>							 
+      <p class="artist-site">Island</p>							
+    </span>						
+</li>
+ end example -->
+
+<script type="text/html" id="chart-item-template">
+	<li id="{id}"class="{isPreviewable} {positionGroup}">						  
+        <span class="movement {status}"> 
+          <img src="/radio1/chart/images/assets/{statusAsClassName}_icon.png" alt="{status}" /> 
+        </span>							
+        <span class="position">{position}</span>							
+        <img src="{imageUrl}" alt="{title} - {artist}" class="cover" />		
+
+        <div class="button_container"> 
+  		<a onclick="return false;" href="#" class="previewItem" id="button"> 
+  			<span class="loader"></span> 
+  		</a> 
+  	  </div> 
+
+
+        <a href="/music/artists/{artist_gid}">														 								
+          <span class="artist">{artist}</span>								
+          <span class="track">{title}</span>							
+  	  </a>							
+        <span class="status">							 
+          <span class="change">{status}</span> |  							 
+          <span class="weeks-in-chart">{weeks_in_chart} weeks in chart
+          </span>							
+        </span>							
+        <span class="detail">							 
+          <a href="/music/artists/{artist_gid}" class="label">Go to artist site</a>							 
+          <p class="artist-site">{label}</p>							
+        </span>						
+  	</li>
+</script>
+
+<script src="http://dev.andrewnicolaou.co.uk/chart/fmtj_utils.js"></script>
+<script src="http://dev.andrewnicolaou.co.uk/chart/jsonloader.js"></script>    
+<script> 
+	gloader.load( ["glow", "1"], {
+	  onLoad: function() {
+	    bbc.fmtj.net.json.model.addModule({
+	      renderer: {
+	        src: "http://dev.andrewnicolaou.co.uk/chart/renderer.js",
+	        id: "chartRenderer"
+	      },
+	      moduleObject: {
+	        id: "chart",
+	        messages: [],
+	        displayNavigation: false
+	      },
+	      feedObject: {
+	        updatePeriod: 10,
+	        dataSource:"http://dev.andrewnicolaou.co.uk/chart/data.json", 
+	        getDataOnLoad: false
+	      }
+	    });        
+	  } // end onLoad
+	})
+</script>

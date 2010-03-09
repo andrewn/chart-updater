@@ -1,0 +1,19 @@
+<!--#if expr='$QUERY_STRING = /[&]?jsoncallback=([^&]*)&?/'-->
+  <!--#set var="json_callback" value="$1"-->
+<!--#endif -->
+
+<code>
+
+<!--#if expr="$json_callback"-->
+  <!--#echo var="json_callback"--> (
+<!--#endif-->
+  {
+    json: 12344,
+    easy: true
+    
+  }
+<!--#if expr="$json_callback != '(none)'"-->
+  )
+<!--#endif-->  
+</code>
+<h1>! <!--#echo var="json_callback"--></h1>
